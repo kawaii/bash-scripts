@@ -10,7 +10,13 @@ export CORE_TOOLS=(build-essential checkinstall curl git libgd-dev libgeoip-dev 
 export EXTRA_TOOLS=(htop nano rsync screenfetch sudo zsh)
 
 apt-get update
-apt-get -y install ${CORE_TOOLS[*]} ${EXTRA_TOOLS[*]}
+apt-get -y install ${CORE_TOOLS[*]}
+
+printf "\nWould you like to install some \033[0;32moptional\033[0m tools in addition to the core build toolkit? [Y/N]\n"
+read -r answer
+if [[ $answer = "Y" ]] ; then
+    apt-get -y install ${EXTRA_TOOLS[*]}
+fi
 
 mkdir -p /opt/build
 rm -rf /opt/build/*
