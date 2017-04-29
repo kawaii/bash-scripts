@@ -15,6 +15,9 @@ mkdir -p /opt/build
 rm -rf /opt/build/*
 cd /opt/build
 
+git clone https://github.com/openssl/openssl.git
+git clone https://github.com/certbot/certbot.git
+
 wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
 tar -xvzf nginx-${NGINX_VERSION}.tar.gz
 
