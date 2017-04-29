@@ -14,8 +14,8 @@ apt-get -y install ${CORE_TOOLS[*]}
 
 printf "\nWould you like to install some \033[0;32moptional\033[0m tools in addition to the core build toolkit? [Y/N]\n"
 read -r answer
-if [[ $answer = "Y" ]] ; then
-    apt-get -y install ${EXTRA_TOOLS[*]}
+if [[ $answer =~ ^([yY][eE][sS]|[yY])+$ ]] ; then
+apt-get -y install ${EXTRA_TOOLS[*]}
 fi
 
 mkdir -p /opt/build
