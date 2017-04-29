@@ -6,9 +6,10 @@ fi
 
 export NGINX_VERSION=1.13.0
 export CORE_TOOLS=(build-essential checkinstall curl git libgd-dev libgeoip-dev libpcre3 libpcre3-dev libssl-dev wget)
+export EXTRA_TOOLS=(htop nano rsync screenfetch sudo zsh)
 
 apt-get update
-apt-get -y install ${CORE_TOOLS[*]}
+apt-get -y install ${CORE_TOOLS[*]} ${EXTRA_TOOLS[*]}
 
 mkdir -p /opt/build
 rm -rf /opt/build/*
