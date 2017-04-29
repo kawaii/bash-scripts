@@ -1,4 +1,9 @@
 #!/bin/bash
+if (( $EUID != 0 )); then
+    printf "\nYo, you need to run this script as \033[0;31mroot\033[0m or \033[0;31msudo\033[0m dawg! ¯\_(ツ)_/¯\n\n"
+    exit
+fi
+
 export NGINX_VERSION=1.13.0
 export CORE_TOOLS=(build-essential checkinstall curl git libgd-dev libgeoip-dev libpcre3 libpcre3-dev libssl-dev wget)
 
