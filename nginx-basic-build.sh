@@ -5,6 +5,7 @@ if (( $EUID != 0 )); then
 fi
 
 export NGINX_VERSION=1.13.0
+export OPENSSL_VERSION=0453163e9a9052884cce288ff3e2acb77725a239
 export CORE_TOOLS=(build-essential checkinstall curl git libgd-dev libgeoip-dev libpcre3 libpcre3-dev libssl-dev wget)
 export EXTRA_TOOLS=(htop nano rsync screenfetch sudo zsh)
 
@@ -17,6 +18,11 @@ cd /opt/build
 
 git clone https://github.com/openssl/openssl.git
 git clone https://github.com/certbot/certbot.git
+
+cd /opt/build/openssl
+git checkout ${OPENSSL_VERSION}
+
+cd /opt/build
 
 wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
 tar -xvzf nginx-${NGINX_VERSION}.tar.gz
@@ -65,6 +71,7 @@ mkdir -p /var/cache/nginx /usr/lib/nginx/modules
         --without-mail_pop3_module \
         --without-mail_smtp_module \
         --without-mail_imap_module \
+        --with-openssl=/opt/build/openssl
 
 sleep 3
 
