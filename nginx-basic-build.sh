@@ -6,8 +6,8 @@ fi
 
 export NGINX_VERSION=1.13.0
 export OPENSSL_VERSION=0453163e9a9052884cce288ff3e2acb77725a239
-export CORE_TOOLS=(build-essential checkinstall curl git libgd-dev libgeoip-dev libpcre3 libpcre3-dev libssl-dev wget)
-export EXTRA_TOOLS=(htop nano rsync screenfetch sudo zsh)
+export CORE_TOOLS=(build-essential checkinstall curl git libgd-dev libgeoip-dev libpcre3 libpcre3-dev libssl-dev ltrace wget)
+export EXTRA_TOOLS=(htop nano rsync screenfetch sudo zsh zsh-doc)
 
 apt-get update
 apt-get -y install ${CORE_TOOLS[*]}
@@ -23,10 +23,16 @@ rm -rf /opt/build/*
 cd /opt/build
 
 git clone https://github.com/openssl/openssl.git
-git clone https://github.com/certbot/certbot.git
-
 cd /opt/build/openssl
 git checkout ${OPENSSL_VERSION}
+
+cd /opt/
+
+printf "\nWould you like to download the latest version of \033[1;35mcertbot\033[0m (Let's Encrypt client) from GitHub? [Y/N]\n"
+read -r answer
+if [[ $answer =~ ^([yY][eE][sS]|[yY])+$ ]] ; then
+git clone https://github.com/certbot/certbot.git
+fi
 
 cd /opt/build
 
