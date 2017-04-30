@@ -58,8 +58,8 @@ mkdir -p /var/cache/nginx /usr/lib/nginx/modules
         --http-log-path=/var/log/nginx/access.log \
         --pid-path=/var/run/nginx.pid \
         --lock-path=/var/run/nginx.lock \
-        --user=nginx \
-        --group=nginx \
+        --user=www-data \
+        --group=www-data \
         --http-client-body-temp-path=/var/cache/nginx/client_temp \
         --http-proxy-temp-path=/var/cache/nginx/proxy_temp \
         --http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp \
