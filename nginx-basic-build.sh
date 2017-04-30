@@ -39,7 +39,7 @@ git checkout ${OPENSSL_VERSION}
 
 cd /opt/build
 
-wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
+wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
 tar -xvzf nginx-${NGINX_VERSION}.tar.gz
 
 rm nginx-${NGINX_VERSION}.tar.gz
