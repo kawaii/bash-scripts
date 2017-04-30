@@ -18,14 +18,6 @@ if [[ $answer =~ ^([yY][eE][sS]|[yY])+$ ]] ; then
 apt-get -y install ${EXTRA_TOOLS[*]}
 fi
 
-mkdir -p /opt/build
-rm -rf /opt/build/*
-cd /opt/build
-
-git clone https://github.com/openssl/openssl.git
-cd /opt/build/openssl
-git checkout ${OPENSSL_VERSION}
-
 cd /opt/
 
 printf "\nWould you like to download the latest version of \033[1;35mcertbot\033[0m (Let's Encrypt client) from GitHub? [Y/N]\n"
@@ -33,6 +25,14 @@ read -r answer
 if [[ $answer =~ ^([yY][eE][sS]|[yY])+$ ]] ; then
 git clone https://github.com/certbot/certbot.git
 fi
+
+mkdir -p /opt/build
+rm -rf /opt/build/*
+cd /opt/build
+
+git clone https://github.com/openssl/openssl.git
+cd /opt/build/openssl
+git checkout ${OPENSSL_VERSION}
 
 cd /opt/build
 
