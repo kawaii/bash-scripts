@@ -86,7 +86,9 @@ mkdir -p /var/cache/nginx /usr/lib/nginx/modules
         --without-mail_pop3_module \
         --without-mail_smtp_module \
         --without-mail_imap_module \
-        --with-openssl=/opt/build/openssl
+        --with-openssl=/opt/build/openssl \
+        --add-module=/opt/build/testcookie-nginx-module \
+        --add-module=/opt/build/headers-more-nginx-module
 
 sleep 3
 
