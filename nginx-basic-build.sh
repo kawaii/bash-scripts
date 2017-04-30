@@ -6,8 +6,8 @@ fi
 
 export NGINX_VERSION=1.13.0
 export OPENSSL_VERSION=0453163e9a9052884cce288ff3e2acb77725a239
-export CORE_TOOLS=(build-essential checkinstall curl git libgd-dev libgeoip-dev libpcre3 libpcre3-dev libssl-dev ltrace wget)
-export EXTRA_TOOLS=(htop nano rsync screenfetch sudo zsh zsh-doc)
+export CORE_TOOLS=(build-essential checkinstall curl git libgd-dev libgeoip-dev libpcre3 libpcre3-dev libssl-dev wget)
+export EXTRA_TOOLS=(htop nano ltrace rsync screenfetch sudo strace zsh zsh-doc)
 
 apt-get update
 apt-get -y install ${CORE_TOOLS[*]}
