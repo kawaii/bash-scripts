@@ -12,7 +12,7 @@ export EXTRA_TOOLS=(htop nano rsync screenfetch sudo zsh zsh-doc)
 apt-get update
 apt-get -y install ${CORE_TOOLS[*]}
 
-printf "\nWould you like to install some \033[0;32moptional\033[0m tools in addition to the core build toolkit? [Y/N]\n"
+printf "\nWould you like to install some \033[0;32moptional\033[0m tools in addition to the core toolkit? [Y/N]\n"
 read -r answer
 if [[ $answer =~ ^([yY][eE][sS]|[yY])+$ ]] ; then
 apt-get -y install ${EXTRA_TOOLS[*]}
@@ -29,6 +29,9 @@ fi
 mkdir -p /opt/build
 rm -rf /opt/build/*
 cd /opt/build
+
+git clone https://github.com/kyprizel/testcookie-nginx-module.git
+git clone https://github.com/openresty/headers-more-nginx-module.git
 
 git clone https://github.com/openssl/openssl.git
 cd /opt/build/openssl
