@@ -90,10 +90,8 @@ mkdir -p /var/cache/nginx /usr/lib/nginx/modules
         --add-module=/opt/build/testcookie-nginx-module \
         --add-module=/opt/build/headers-more-nginx-module
 
-sleep 3
-
-make && sleep 3
-make install && sleep 3
+make
+make install
 
 mkdir -p /var/www/website
 touch /var/www/website/index.html
