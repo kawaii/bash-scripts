@@ -11,7 +11,7 @@ export EXTRA_TOOLS=(htop nano ltrace rsync screenfetch sudo strace zsh zsh-doc)
 apt-get update
 apt-get -y install ${CORE_TOOLS[*]}
 
-printf "\nWould you like to install some \033[0;32moptional\033[0m tools in addition to the core toolkit? [Y/N]\n"
+printf "\nWould you like to install some \033[0;32moptional\033[0m tools in addition to the core toolkit? [Y/N]\n\n"
 read -r answer
 if [[ $answer =~ ^([yY][eE][sS]|[yY])+$ ]] ; then
 apt-get -y install ${EXTRA_TOOLS[*]}
