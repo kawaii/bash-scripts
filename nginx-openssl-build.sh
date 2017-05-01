@@ -12,7 +12,7 @@ export EXTRA_TOOLS=(htop nano ltrace rsync screenfetch sudo strace zsh zsh-doc)
 apt-get update
 apt-get -y install ${CORE_TOOLS[*]}
 
-printf "\nWould you like to install some \033[0;32moptional\033[0m tools in addition to the core toolkit? [Y/N]\n"
+printf "\nWould you like to install some \033[0;32moptional\033[0m tools in addition to the core toolkit? [Y/N]\n\n"
 read -r answer
 if [[ $answer =~ ^([yY][eE][sS]|[yY])+$ ]] ; then
 apt-get -y install ${EXTRA_TOOLS[*]}
@@ -20,7 +20,7 @@ fi
 
 cd /opt/
 
-printf "\nWould you like to download the latest version of \033[1;35mcertbot\033[0m (Let's Encrypt client) from GitHub? [Y/N]\n"
+printf "\nWould you like to download the latest version of \033[1;35mcertbot\033[0m (Let's Encrypt client) from GitHub? [Y/N]\n\n"
 read -r answer
 if [[ $answer =~ ^([yY][eE][sS]|[yY])+$ ]] ; then
 git clone https://github.com/certbot/certbot.git
@@ -40,8 +40,23 @@ git checkout ${OPENSSL_VERSION}
 cd /opt/build
 
 wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
-tar -xvzf nginx-${NGINX_VERSION}.tar.gz
+wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz.asc
+wget https://nginx.org/keys/aalexeev.key && gpg --import aalexeev.key
+wget https://nginx.org/keys/is.key && gpg --import is.key
+wget https://nginx.org/keys/mdounin.key && gpg --import mdounin.key
+wget https://nginx.org/keys/maxim.key && gpg --import maxim.key
+wget https://nginx.org/keys/sb.key && gpg --import sb.key
+gpg --verify nginx-${NGINX_VERSION}.tar.gz.asc nginx-${NGINX_VERSION}.tar.gz
 
+if (( $? != 0 )); then
+printf "\n\033[1;31mWARNING: COULD NOT VERIFY SOURCE CODE SIGNATURE, ARE YOU SURE YOU WISH TO CONTINUE? [Y/N]\033[0m\n\n"
+read -r answer
+if [[ $answer =~ ^([nN][oO]|[nN])+$ ]] ; then
+exit
+fi
+fi
+
+tar -xvzf nginx-${NGINX_VERSION}.tar.gz
 rm nginx-${NGINX_VERSION}.tar.gz
 
 cd nginx-${NGINX_VERSION}/
