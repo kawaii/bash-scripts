@@ -9,20 +9,28 @@ export OPENSSL_VERSION=0453163e9a9052884cce288ff3e2acb77725a239
 export CORE_TOOLS=(build-essential checkinstall curl git libgd-dev libgeoip-dev libpcre3 libpcre3-dev libssl-dev wget)
 export EXTRA_TOOLS=(htop nano ltrace rsync screenfetch sudo strace zsh zsh-doc)
 
-apt-get update
-apt-get -y install ${CORE_TOOLS[*]}
-
 printf "\nWould you like to install some \033[0;32moptional\033[0m tools in addition to the core toolkit? [Y/N]\n\n"
 read -r answer
 if [[ $answer =~ ^([yY][eE][sS]|[yY])+$ ]] ; then
+MORE_TOOLS=1
+fi
+
+printf "\nWould you like to download the latest version of \033[1;35mcertbot\033[0m (Let's Encrypt client) from GitHub? [Y/N]\n\n"
+read -r answer
+if [[ $answer =~ ^([yY][eE][sS]|[yY])+$ ]] ; then
+CERTBOT=1
+fi
+
+apt-get update
+apt-get -y install ${CORE_TOOLS[*]}
+
+if [[ $MORE_TOOLS = 1 ]]; then
 apt-get -y install ${EXTRA_TOOLS[*]}
 fi
 
 cd /opt/
 
-printf "\nWould you like to download the latest version of \033[1;35mcertbot\033[0m (Let's Encrypt client) from GitHub? [Y/N]\n\n"
-read -r answer
-if [[ $answer =~ ^([yY][eE][sS]|[yY])+$ ]] ; then
+if [[ $CERTBOT = 1 ]]; then
 git clone https://github.com/certbot/certbot.git
 fi
 
