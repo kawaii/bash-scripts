@@ -56,8 +56,6 @@ wget https://nginx.org/keys/maxim.key && gpg --import maxim.key
 wget https://nginx.org/keys/sb.key && gpg --import sb.key
 gpg --verify nginx-${NGINX_VERSION}.tar.gz.asc nginx-${NGINX_VERSION}.tar.gz
 
-sleep 3
-
 if (( $? != 0 )); then
 printf "\n\033[1;31mWARNING: COULD NOT VERIFY SOURCE CODE SIGNATURE, ARE YOU SURE YOU WISH TO CONTINUE? [Y/N]\033[0m\n\n"
 read -r answer
