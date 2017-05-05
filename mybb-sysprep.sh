@@ -9,11 +9,12 @@ export FORUM_DIR="mybb"
 export EXTRA_TOOLS=(apt-transport-https ca-certificates curl git htop nano lsb-release ltrace rsync screenfetch sudo strace unzip wget zsh)
 export PHP_BINARIES=(php7.0-bz2 php7.0-curl php7.0-fpm php7.0-gd php7.0-mbstring php7.0-mcrypt php7.0-mysql php7.0-pgsql php7.0-xml php7.0-zip)
 
+apt-get -y install ${EXTRA_TOOLS[*]}
+
 wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
 apt-get update
 
-apt-get -y install ${EXTRA_TOOLS[*]}
 apt-get -y install ${PHP_BINARIES[*]}
 
 mkdir -p /var/www/${FORUM_DIR}
