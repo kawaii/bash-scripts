@@ -6,7 +6,7 @@ fi
 
 export OPENSSL_VERSION=0453163e9a9052884cce288ff3e2acb77725a239
 export CORE_TOOLS=(autoconf automake build-essential checkinstall curl git intltool libcurl4-openssl-dev libevent-dev libgd-dev libgeoip-dev libglib2.0-dev libgtk2.0-dev libnotify-dev libpcre3 libpcre3-dev libssl-dev libtool libxml2-dev pkg-config wget)
-export EXTRA_TOOLS=(htop nano ltrace rsync screenfetch sudo strace zsh zsh-doc)
+export EXTRA_TOOLS=(htop nano ltrace rsync screenfetch sudo strace zsh)
 
 apt-get update
 apt-get -y install ${CORE_TOOLS[*]}

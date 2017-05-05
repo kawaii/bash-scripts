@@ -7,7 +7,7 @@ fi
 export NGINX_VERSION=1.13.0
 export OPENSSL_VERSION=0453163e9a9052884cce288ff3e2acb77725a239
 export CORE_TOOLS=(build-essential checkinstall curl git libgd-dev libgeoip-dev libpcre3 libpcre3-dev libssl-dev wget)
-export EXTRA_TOOLS=(htop nano ltrace rsync screenfetch sudo strace zsh zsh-doc)
+export EXTRA_TOOLS=(htop nano ltrace rsync screenfetch sudo strace zsh)
 
 printf "\nWould you like to install some \033[0;32moptional\033[0m tools in addition to the core toolkit? [Y/N]\n\n"
 read -r answer
