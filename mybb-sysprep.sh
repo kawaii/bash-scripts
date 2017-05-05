@@ -32,3 +32,5 @@ chmod 666 inc/config.php inc/settings.php
 chmod 777 cache/ cache/themes/ uploads/ uploads/avatars/
 chmod 666 inc/languages/english/*.php inc/languages/english/admin/*.php
 chmod 777 cache/ cache/themes/ uploads/ uploads/avatars/ admin/backups/
+
+printf "\n\033[0;32mComplete!\033[0m\n\n"
