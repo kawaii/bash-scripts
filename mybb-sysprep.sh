@@ -4,7 +4,7 @@ if [[ $EUID != 0 ]]; then
     exit
 fi
 
-export MYBB_VERSION=1811
+export MYBB_VERSION=1812
 export FORUM_DIR="mybb"
 export EXTRA_TOOLS=(apt-transport-https ca-certificates curl git htop nano lsb-release rsync unzip wget zsh)
 export PHP_BINARIES=(php7.0-bz2 php7.0-curl php7.0-fpm php7.0-gd php7.0-mbstring php7.0-mcrypt php7.0-mysql php7.0-pgsql php7.0-xml php7.0-zip)
